@@ -21,17 +21,31 @@ public class Temp {
         System.out.println("Enter S1 and S2");
         String s1=sc.nextLine();
         String s2=sc.nextLine();
-
+        System.out.println("No of Elements : "+n);
+        System.out.print("Widths : ");
+        print(widths);
+        System.out.print("Heights : ");
+        print(heights);
+        System.out.print("BlockOrder : ");
+        print(blockOrder);
         for(int i=0;i<s1.length();i++){
             char c=s1.charAt(i);
             start(c,blockOrder,positionsForS1,lengths,widths);
         }
+        System.out.print("Lenghts for x coordinates : ");
+        print(lengths);
         int width=lengths[heights.length-1];
         lengths=new int[n];
         for(int i=0;i<s2.length();i++){
             char c=s2.charAt(i);
             start(c,blockOrder,positionsForS2,lengths,heights);
         }
+        System.out.print("Lenghts for y coordinates : ");
+        print(lengths);
+        System.out.print("Positions for x coordinates : ");
+        print(positionsForS1);
+        System.out.print("Positions for y coordinates : ");
+        print(positionsForS2);
         int height=lengths[heights.length-1];
         System.out.println("Floorplan size: W= "+width+" X H= "+height);
         System.out.println("Coordinates of blocks");
@@ -39,6 +53,13 @@ public class Temp {
             System.out.println(""+(char)(97+i)+"("+positionsForS1[i]+","+positionsForS2[i]+")");
         }
 
+    }
+    
+    private static void print(int ar[]){
+        for(int i=0;i<ar.length;i++){
+            System.out.print(ar[i]+"\t");
+        }
+        System.out.println();
     }
 
     private static void start(char c, int[] blockOrder, int[] positions, int[] lengths,int[] ar) {
